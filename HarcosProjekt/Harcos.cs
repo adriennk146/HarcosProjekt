@@ -17,7 +17,25 @@ namespace HarcosProjekt
 
         public Harcos(string nev, int statuszSablon)
         {
-            
+            this.nev = nev;
+            this.szint = 1;
+            this.tapasztalat = 0;
+            switch (statuszSablon)
+            {
+                case 1:
+                    this.alapEletero = 15;
+                    this.alapSebzes = 3; 
+                    break;
+                case 2:
+                    this.alapEletero = 12;
+                    this.alapSebzes = 4; 
+                    break;
+                case 3:
+                    this.alapEletero = 8;
+                    this.alapSebzes = 5; 
+                    break;
+            }
+            this.eletero = MaxEletero;
         }
 
         public string Nev
@@ -73,7 +91,9 @@ namespace HarcosProjekt
 
         public string ToString()
         {
-            return "";
+            return string.Format("{0} - LVL: {1} - EXP: {2}/{3} - HP: {4}/{5} - DMG: {6}",
+                this.nev,this.tapasztalat,this.SzintLepeshez,this.eletero,this.MaxEletero,
+                this.Sebzes);
         }
     }
 }
