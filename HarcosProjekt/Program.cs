@@ -16,6 +16,7 @@ namespace HarcosProjekt
         {
             FelhasznaloHarcosa();
             Beolvasas();
+            Jatek();
             
            
 
@@ -102,7 +103,68 @@ namespace HarcosProjekt
             return valasztott;
         }
 
-       
+        static void Jatek()
+        {
+            char menupont = 'n';
+            do
+            {
+                fordulo++;
+                Console.WriteLine("\t\t\t" + fordulo + ". FORDULÓ:");
+                HarcosokKiiratasa();
+                menupont = Menu();
+                switch (menupont)
+                {
+                    case 'a': h1.Megkuzd(KivelKuzd()); break;
+                    case 'b': h1.Gyogyul(); break;
+                }
+                if (fordulo % 3 == 0)
+                {
+                    RandomHarcos().Megkuzd(h1);
+                    foreach (Harcos h in harcosok)
+                    {
+                        h.Gyogyul();
+                    }
+                }
+            } while (menupont != 'c');
+
+
+
+        }
+
+        static Harcos KivelKuzd()
+        {
+            int ujra = 0;
+            int szam = 0;
+            do
+            {
+                if (ujra > 0)
+                {
+                    Console.WriteLine("HIBÁS ÉRTÉKET ADOTT MEG!");
+                }
+                Console.WriteLine("Hányas harcossal szeretnél kűzdeni?");
+                try
+                {
+                    szam = int.Parse(Console.ReadLine());
+                }
+                catch
+                {
+                    szam = 0;
+                }
+                ujra++;
+            } while (szam > harcosok.Count() || szam < 1);
+
+            return harcosok[szam - 1];
+        }
+
+        static Harcos RandomHarcos()
+        {
+            Random r = new Random();
+            return harcosok[r.Next(0, harcosok.Count - 1)];
+
+        }
+
+
+
 
 
     }
