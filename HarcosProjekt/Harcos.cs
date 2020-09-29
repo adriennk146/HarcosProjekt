@@ -39,44 +39,102 @@ namespace HarcosProjekt
         }
 
         public string Nev
-        { 
-            get => this.nev; 
-            set => this.nev = value;
+        {
+            get
+            {
+                return this.nev;
+            }
+            set
+            {
+                this.nev = value;
+            }
         }
         public int Szint 
-        { 
-            get => this.szint;
-            set => this.szint = value;
+        {
+            get
+            {
+                return this.szint;
+            }
+            set
+            {
+                if(this.szint +1 ==value && this.Tapasztalat>=this.SzintLepeshez )
+                {
+                    this.Tapasztalat -= this.SzintLepeshez;
+                    this.szint = value;
+                    this.Eletero = this.MaxEletero;
+                }
+                
+            }
         }
         public int Tapasztalat 
         {
-            get => this.tapasztalat;
-            set => this.tapasztalat = value; 
+            get
+            {
+                return this.tapasztalat;
+            }
+            set
+            {
+                this.tapasztalat = value;
+                if(this.tapasztalat>this.SzintLepeshez)
+                {
+                    this.Szint++;
+                }
+            }
         }
         public int AlapEletero 
-        { 
-            get => this.alapEletero;
+        {
+            get
+            {
+                return this.alapEletero;
+            }
         }
         public int AlapSebzes
         {
-            get => this.alapSebzes;
+            get
+            {
+                return this.alapSebzes;
+            }
         }
         public int Eletero
         {
-            get => this.eletero;
-            set => this.eletero = value;
+            get
+            {
+                return this.eletero;
+            }
+            set
+            {
+               
+                this.eletero = value;
+                if(this.eletero==0)
+                {
+                    this.Tapasztalat = 0;
+                }
+                if(this.eletero>this.MaxEletero)
+                {
+                    this.eletero = this.MaxEletero;
+                }
+            }
         }
         public int Sebzes
         {
-            get => this.alapSebzes + this.szint;
+            get
+            {
+                return this.alapSebzes + this.szint;
+            }
         }
         public int SzintLepeshez
         {
-            get => 10 + this.szint * 5;
+            get
+            {
+                return 10 + this.szint * 5;
+            }
         }
         public int MaxEletero
         {
-            get=> this.alapEletero + szint * 3;
+            get
+            {
+                return this.alapEletero + szint * 3;
+            }
         }
 
         public void Megkuzd(Harcos masikHarcos)
