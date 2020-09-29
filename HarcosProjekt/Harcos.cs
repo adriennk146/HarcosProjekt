@@ -81,6 +81,29 @@ namespace HarcosProjekt
 
         public void Megkuzd(Harcos masikHarcos)
         {
+            if(this==masikHarcos)
+            {
+                Console.WriteLine("***HIBA! NEM LEHET MINDKÉT HARCOS UGYANAZ!***");
+            }
+            else if(this.eletero==0 || masikHarcos.Eletero==0)
+            {
+                Console.WriteLine("***Az egyik harcosnak nincs életereje, így nem harcolhat!***");
+            }
+            else
+            {
+                masikHarcos.Eletero -= this.Sebzes;
+                this.Tapasztalat += 5;
+                if(masikHarcos.Eletero>0)
+                {
+                    masikHarcos.Tapasztalat += 5;
+                    masikHarcos.Megkuzd(this);
+                }
+                else
+                {
+                    this.Tapasztalat += 10;
+                }
+            }
+
 
         }
 
