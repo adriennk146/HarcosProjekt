@@ -80,8 +80,29 @@ namespace HarcosProjekt
             }
         }
 
-        
+       
 
+        static char Menu()
+        {
+            char valasztott = 'n';
+            int ujra = 0;
+            do
+            {
+                if (ujra > 0)
+                {
+                    Console.WriteLine("HIBÁS ÉRTÉKET ADTÁL MEG!");
+                }
+                Console.WriteLine("\nVÁLASSZ AZ ALÁBBI MENÜPONTOK KÖZÜL:\n" +
+                "a - Megkűzdeni egy harcossal\n" +
+                "b - Gyógyulni\n" +
+                "c - Kilépni");
+                valasztott = char.Parse(Console.ReadLine());
+                ujra++;
+            } while (valasztott != 'a' && valasztott != 'b' && valasztott != 'c');
+            return valasztott;
+        }
+
+       
 
 
     }
