@@ -180,7 +180,7 @@ namespace HarcosProjekt
         public string ToString()
         {
             return string.Format("{0} - LVL: {1} - EXP: {2}/{3} - HP: {4}/{5} - DMG: {6}",
-                this.nev,this.tapasztalat,this.SzintLepeshez,this.eletero,this.MaxEletero,
+                this.nev,this.szint,this.tapasztalat,this.SzintLepeshez,this.eletero,this.MaxEletero,
                 this.Sebzes);
         }
     }
