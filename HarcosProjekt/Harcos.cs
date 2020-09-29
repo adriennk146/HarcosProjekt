@@ -109,7 +109,14 @@ namespace HarcosProjekt
 
         public void Gyogyul()
         {
-
+            if (this.Eletero == 0)
+            {
+                this.Eletero = this.MaxEletero;
+            }
+            else
+            {
+                this.Eletero += 3 + this.Szint;
+            }
         }
 
         public string ToString()
